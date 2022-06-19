@@ -26,7 +26,7 @@ class crawling_selenium:
         
         for result in results:
             article_date = result.find("span", {"class": "cqrEJU"}).text
-            if "Today" in article_date:
+            if "Today" in article_date or "ago" in article_date:
                 obj = result.find("a", {"class" : "gBreWF"})
                 title = obj["title"]
                 href = obj["href"]
@@ -101,20 +101,7 @@ class crawling_selenium:
             elif index == 2:
                 results = html.find_all("article", {"class": "post-card__article"})
             elif index == 3:
-                results = html.find_all("a")
-                
-            
-        
-        
-        
-    
-        
-        
-        
-        
-        
-        
-       
+                results = html.find_all("a")        
         
 test = crawling_selenium()
-test.crawling_bloomingbit(test.get_current_date())
+test.crawling_coindesk(test.get_current_date())
