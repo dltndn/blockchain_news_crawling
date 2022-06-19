@@ -1,6 +1,13 @@
+
 site_list = {
-  'bitcoinmagazine' : 'https://bitcoinmagazine.com/',
-  'coindesk' : 'https://www.coindesk.com/',
-  'cointelegraph' : 'https://cointelegraph.com/',
-  'bloomingbit' : 'https://bloomingbit.io/news'
+  'bitcoinmagazine' : {"url" : 'https://bitcoinmagazine.com/',
+                       "index" : 0},
+  'coindesk' : {"url" : 'https://www.coindesk.com/',
+                "index" : 1},
+  'cointelegraph' : {"url" : 'https://cointelegraph.com/',
+                     "index" : 2},
+  'bloomingbit' : {"url" : 'https://bloomingbit.io/news',
+                   "index" : 3}
 }
+
+print(site_list['bitcoinmagazine']['index'])
