@@ -2,7 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 from time import localtime
 
-class text_to_telegram:
+class get_title_href:
       
   def get_current_date(self): 
     tm = localtime()

@@ -1,17 +1,11 @@
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
-from time import localtime
 from bs4 import BeautifulSoup
 import requests
 import site_list
 
 class crawling_selenium:
-    
-    def get_current_date(self): 
-        tm = localtime()
-        current_date = tm.tm_mday
-        return current_date
     
     def crawling_with_selenium(self, url, index, xpath=0):  #return arr, arr
         title_arr = []
@@ -76,8 +70,4 @@ class crawling_selenium:
                   href_arr.append(href)
               
                 return title_arr, href_arr    
-        
-test = crawling_selenium()
-sl = site_list.site_list()
-
 
