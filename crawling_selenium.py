@@ -3,7 +3,6 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from bs4 import BeautifulSoup
 import requests
-import site_list
 
 class crawling_selenium:
     
@@ -24,6 +23,7 @@ class crawling_selenium:
                 if "hours" in article_date:
                   title = str(result.find("h2", {"class": "m-ellipsis--text m-card--header-text"}).string)
                   href = result.find("a")["href"]
+                  href = url + href
                   title_arr.append(title)
                   href_arr.append(href)
 
@@ -31,6 +31,7 @@ class crawling_selenium:
                 
         else:           #selenium
             driver = webdriver.Chrome()
+            driver.implicitly_wait(100)
             driver.get(URL)
             source = driver.find_element(By.XPATH, xpath).get_attribute("innerHTML")
             html = BeautifulSoup(source, "html.parser")   
@@ -42,6 +43,7 @@ class crawling_selenium:
                       obj = result.find("a", {"class" : "gBreWF"})
                       title = obj["title"]
                       href = obj["href"]
+                      href = url + href
                       title_arr.append(title)
                       href_arr.append(href)
               
@@ -55,6 +57,7 @@ class crawling_selenium:
                       obj = result.find("a", {"class" : "post-card__title-link"})
                       title = obj["title"]
                       href = obj["href"]
+                      href = url + href
                       title_arr.append(title)
                       href_arr.append(href)
               
@@ -64,10 +67,11 @@ class crawling_selenium:
                 results = html.find_all("a")
                 for result in results:
                   title = result.find("h3").text
-                  title = title.lstrip()
+                  title = title.strip()
                   href = result["href"]
+                  href = href.lstrip('/news')
+                  href = url + href
                   title_arr.append(title)
                   href_arr.append(href)
               
                 return title_arr, href_arr    
-
