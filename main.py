@@ -22,11 +22,18 @@ class main:
         href_arr = href_arr1 + href_arr2 + href_arr3 + href_arr4        
          
         return title_arr, href_arr
+    
+    def restructure_data(self):
+        text =''
+        title_arr, href_arr = self.merge_arr()
+        num = len(title_arr)
+        for i in num:
+            result = title_arr[i] + '\n' + f'<a href={href_arr[i]}>링크</a>\n'
+            text += result
             
-        
-            
-        
+        return text
+                
 # init = main()
 # # title_data, href_data = init.merge_arr()
-# init.merge_arr()
+# init.restructure_data()
 
